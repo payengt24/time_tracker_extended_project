@@ -1,5 +1,66 @@
-<div class="row">
+<div id="inForms" class="row">
+    <div class="col">
+        <form>
+            <div class="row">
+                <div class="col">
+                    <h3>Add Entry</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="What did you do?" ng-model="vm.entry.entry">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label>Project</label>
+                    <!-- <pre>{{vm.projectList |json }}</pre> -->
+                    <select class="form-control" ng-model="vm.entry.project_id">
+                        <!-- <option disabled selected>Select Project</option> -->
+                        <option ng-repeat= "project in vm.projectList.list" value="{{project.id}}">{{project.project_name}}</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Date</label>
+                    <input type="date" class="form-control" ng-model="vm.entry.date">
+                </div>
+                <div class="col">
+                    <label>Start Time</label>
+                    <input type="time" class="form-control"  required ng-model="vm.entry.startTime" value="{{vm.startTime}}">
+                </div>
+                <div class="col">
+                    <label>End Time</label>
+                    <input type="time" class="form-control" placeholder="HH:MM:SS" required ng-model="vm.entry.endTime">
+                </div>
 
-    <h1>Add Entry</h1>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary float-right" ng-click="vm.addEntry(vm.entry)">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
+
+<div id="table" class="row">
+    <div class="col">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Entry</th>
+                    <th scope="col">Project</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Hours</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
