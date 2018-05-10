@@ -6,9 +6,16 @@ app.controller('ProjectController', function ($http, ProjectService) {
 
     self.addProject = function (project) {
         ProjectService.addProject(project);
+
     }
  
 
     ProjectService.getAllProject();
+
+
+    self.deleteProject = function (project) {
+        console.log('Am I in the deleteProject for the controller?')
+        ProjectService.deleteProject(project);
+    }
 
 })

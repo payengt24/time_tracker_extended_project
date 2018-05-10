@@ -31,4 +31,21 @@ router.get('/getProject', (req, res) => {
 });
 
 
+
+router.delete('/:id', (req, res) => {
+    console.log('Reached deleteProject Router?')
+    const project = req.params.id;
+    pool.query (`DELETE FROM "project"
+                WHERE "id" = $1;`, [project])
+        .then((results) => {
+            res.send(results.rows);
+        })
+        .catch((error) => {
+            console.log('error on DELETE route', error);
+            res.sendStatus(500);
+        })
+})
+
+
+
 module.exports = router;

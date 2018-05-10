@@ -27,7 +27,8 @@
                             <tr ng-repeat="project in vm.projectList.list">
                                 <td>{{project.project_name}}</td>
                                 <td>Hardcode hours for now</td>
-                                <td><button class="btn btn-danger">Delete</button></td>
+                                <td><button class="btn btn-primary">Edit</button><button class="btn btn-danger" ng-click="vm.deleteProject(project)">Delete</button></td>
+
                             </tr>
                             
                             </div>

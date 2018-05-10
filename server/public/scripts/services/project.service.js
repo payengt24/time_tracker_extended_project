@@ -21,6 +21,7 @@ app.service('ProjectService', function ($http) {
             })
     }
 
+//--GET all project    
     self.getAllProject = function () {
         console.log('getAllProject');
         $http({
@@ -34,6 +35,16 @@ app.service('ProjectService', function ($http) {
             .catch(function (error) {
                 console.log('Error on GET ProjectService', error)
             });
+    }
+
+
+    
+    self.deleteProject = function (project) {
+        return $http.delete('/project/' + project.id).then(function(response){
+            self.getAllProject();
+        }).catch(function(err){
+            console.log('Error deleting message', err)
+        })
     }
 
 })
