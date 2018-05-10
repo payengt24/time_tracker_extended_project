@@ -4,7 +4,7 @@ app.service('ProjectService', function ($http) {
     var self = this;
     self.projectList = {list: [] };
  
-
+//--POST to add project to database
     self.addProject = function (project) {
         console.log(project);
         $http({

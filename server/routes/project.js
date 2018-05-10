@@ -17,4 +17,18 @@ router.post('/addProject', (req, res) => {
         });
 })
 
+router.get('/getProject', (req, res) => {
+    console.log('reached getProject in routes project.js')
+    pool.query(`SELECT * FROM "project" ORDER BY id `)
+        .then((results) => {
+            console.log(results.rows);
+            res.send(results.rows)
+        })
+        .catch((error) => {
+            console.log('error with POST', error);
+            res.sendStatus(500);
+        });
+});
+
+
 module.exports = router;

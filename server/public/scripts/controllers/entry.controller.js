@@ -4,11 +4,12 @@ app.controller('EntryController', function ($http, EntryService) {
 
     self.projectList = EntryService.projectList;
  
+//POST to add entry
+
     self.addEntry = function (entry) {
         EntryService.addEntry(entry);
     }
- 
-    //var 
+ //----Time/Date-----
     var d = new Date(),        
         h = d.getHours(),
         m = d.getMinutes();
@@ -22,7 +23,23 @@ app.controller('EntryController', function ($http, EntryService) {
     self.entry = {
         date: new Date()
     }
+//-----end Time/Date-----
 
+//calling function to get projects so it can be place on the entry page selector
     EntryService.getProject();
+
+
+
+//calling function to get all entries
+    EntryService.getAllEntry();
+
+
+
+
+
+
+
+
+
 
 })

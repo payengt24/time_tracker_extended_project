@@ -4,6 +4,7 @@ app.service('EntryService', function ($http) {
     var self = this;
     self.projectList = {list: [] };
 
+    // POST to add entry to database
     self.addEntry = function (entry) {
         console.log("adding entry", entry);
         $http({
@@ -20,21 +21,7 @@ app.service('EntryService', function ($http) {
             })
     }
 
-    self.getAllEntry = function () {
-        console.log('getAllEntry');
-        $http({
-            method: 'GET',
-            url: '/entry/getEntry'
-        })
-            .then(function (response) {
-                console.log('my response', response.data);
-                // self.projectList.list = response.data;
-            })
-            .catch(function (error) {
-                console.log('Error on GET EntryService', error)
-            });
-    }
-
+    //request to GET Project so it can be place in ENTRY selector
     self.getProject = function (){
         console.log('getting project for select');
         $http({
@@ -49,5 +36,23 @@ app.service('EntryService', function ($http) {
                 console.log('Error on GET EntryService', error)
             });
     }
+
+    self.getAllEntry = function () {
+        console.log('getAllEntry');
+        $http({
+            method: 'GET',
+            url: '/entry/getEntry'
+        })
+            .then(function (response) {
+                console.log('my response', response.data);
+                self.projectList.list = response.data;
+            })
+            .catch(function (error) {
+                console.log('Error on GET EntryService', error)
+            });
+    }
+
+
+
 
 })

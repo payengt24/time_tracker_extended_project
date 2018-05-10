@@ -14,17 +14,26 @@
         <div class="col">
             <table class="table">
                 <thead class="thead-dark">
-                    <tr ng-repeat="project in vm.projectList.list">
+                    <tr>
                         <th scope="col">Project</th>
                         <th scope="col">Total Hours</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </tbody>
+                <div class="row">
+                    <div class="col" >
+                        <tbody >
+                            <div>
+                            <tr ng-repeat="project in vm.projectList.list">
+                                <td>{{project.project_name}}</td>
+                                <td>Hardcode hours for now</td>
+                                <td><button class="btn btn-danger">Delete</button></td>
+                            </tr>
+                            
+                            </div>
+                        </tbody>
+                    </div>    
+            </div>
             </table>
         </div>
     </div>

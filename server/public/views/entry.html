@@ -57,8 +57,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
+                <tr ng-repeat="entry in vm.projectList.list">
+                    <td>{{entry.entry}}</td>
+                    <td>{{entry.project_id}}</td>
+                    <td>{{entry.date}}</td>
+                    <td>{{entry.hours}}</td>
+                    <button class="btn btn-danger">Delete</button>
+
                 </tr>
             </tbody>
         </table>

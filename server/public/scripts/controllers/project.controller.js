@@ -9,4 +9,6 @@ app.controller('ProjectController', function ($http, ProjectService) {
     }
  
 
+    ProjectService.getAllProject();
+
 })

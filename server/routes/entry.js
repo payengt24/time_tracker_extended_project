@@ -17,7 +17,7 @@ router.post('/addEntry', (req, res) => {
             res.sendStatus(500);
         });
 })
-
+//router to get project into selector
 router.get('/getProject', (req, res) => {
     console.log("Server: getting project list");
     pool.query(`SELECT * FROM "project"`)
@@ -30,5 +30,23 @@ router.get('/getProject', (req, res) => {
         res.sendStatus(500);
     });
 })
+
+
+// router.get('/getEntry', (req, res) => {
+//     pool.query(`SELECT P.name AS project_name, P.id
+//                 FROM project
+//                 SELECT array_agg(E.name) AS entry, date, startTime, endTime, 
+//                 FROM history
+//                 RIGHT JOIN project ON  `)
+//         .then((results) => {
+//             console.log(results.rows);
+//             res.send(results.rows)
+//         })
+//         .catch((error) => {
+//             console.log('error with POST', error);
+//             res.sendStatus(500);
+//         });
+// });
+
 
 module.exports = router;
