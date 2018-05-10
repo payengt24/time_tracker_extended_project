@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-        <h2>Add Project</h2>
+        <h4>Add Project</h4>
         <form>
             <input class="form-control" type="text" placeholder="Project Name" ng-model="vm.project.project_name">
             <button class="btn btn-primary float-right" ng-click="vm.addProject(vm.project)">Submit</button>
@@ -8,33 +8,38 @@
     </div>
 </div>
 
-<h2>Projects</h2>
+<h4>Projects</h4>
 
 <div id="table" class="row">
-        <div class="col">
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Project</th>
-                        <th scope="col">Total Hours</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <div class="row">
-                    <div class="col" >
-                        <tbody >
-                            <div>
+    <div class="col">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Project</th>
+                    <th scope="col">Total Hours</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <div class="row">
+                <div class="col">
+                    <tbody>
+                        <div>
                             <tr ng-repeat="project in vm.projectList.list">
-                                <td>{{project.project_name}}</td>
-                                <td>Hardcode hours for now</td>
-                                <td><button class="btn btn-primary">Edit</button><button class="btn btn-danger" ng-click="vm.deleteProject(project)">Delete</button></td>
+
+                                <td><input type="text" ng-model="project.project_name"></td>
+                                <td><input type="text" ng-model="project.project_name"></td>
+                                <td>
+                                    <button class="btn btn-primary">Edit</button>
+                                    <button class="btn btn-danger" ng-click="vm.deleteProject(project)">Delete</button>
+                                </td>
 
                             </tr>
-                            
-                            </div>
-                        </tbody>
-                    </div>    
+
+                        </div>
+                    </tbody>
+                </div>
             </div>
-            </table>
-        </div>
+        </table>
     </div>
+</div>
+

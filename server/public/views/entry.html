@@ -3,7 +3,7 @@
         <form>
             <div class="row">
                 <div class="col">
-                    <h3>Add Entry</h3>
+                    <h4>Add Entry</h4>
                 </div>
             </div>
             <div class="row">
@@ -46,6 +46,7 @@
 
 <div id="table" class="row">
     <div class="col">
+        <h4>History</h4>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -58,10 +59,14 @@
             </thead>
             <tbody>
                 <tr ng-repeat="entry in vm.projectList.list">
-                    <td>{{entry.entry}}</td>
-                    <td>{{entry.project_id}}</td>
-                    <td>{{entry.date}}</td>
-                    <td>{{entry.hours}}</td>
+                    <td><input type="text" ng-model="entry.entry"></td>
+                    <td><input type="text" ng-model="entry.project_id"></td>
+                    <td><input type="text" ng-model="entry.date"></td>
+                    <td><input type="text" ng-model="entry.hours"></td>
+                    
+                    
+                    
+                    
                     <td><button class="btn btn-primary">Edit</button><button class="btn btn-danger">Delete</button></td>
 
                 </tr>
