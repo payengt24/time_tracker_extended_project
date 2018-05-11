@@ -36,6 +36,12 @@ app.controller('EntryController', function ($http, EntryService) {
     EntryService.getAllEntry();
 
 
+    self.deleteEntry = function (entry) {
+        console.log('Am I in the deleteEntry for the controller?')
+        EntryService.deleteEntry(entry);
+    }
+
+
 
 
 

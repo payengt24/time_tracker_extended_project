@@ -54,6 +54,12 @@ app.service('EntryService', function ($http) {
     }
 
 
-
+    self.deleteEntry = function (entry) {
+        return $http.delete('/entry/' + entry.id).then(function(response){
+            self.getAllEntry();
+        }).catch(function(err){
+            console.log('Error deleting message', err)
+        })
+    }
 
 })

@@ -60,11 +60,11 @@
             <tbody>
                     <!-- <pre>{{vm | json}}</pre> -->
                 <tr ng-repeat="entry in vm.history.list">
-                    <td><input type="text" ng-model="entry.entry"></td>
-                    <td><input type="text" ng-model="entry.project_name"></td>
-                    <td><input type="text" ng-model="entry.date | date: MM-dd-yyyy"></td>
-                    <td><input type="text" value="{{entry.hours + '.' + (entry.minutes/60) * 10}}"></td>
-                    <td><button class="btn btn-primary">Edit</button><button class="btn btn-danger">Delete</button></td>
+                    <td><input type="text" ng-value="entry.entry"></td>
+                    <td><input type="text" ng-value="entry.project_name"></td>
+                    <td><input type="text" ng-value="entry.date | date: MM-dd-yyyy"></td>
+                    <td><input type="text" value="{{entry.hours + '.' + ((entry.minutes/60) * 10).toFixed(0)}}"></td>
+                    <td><button class="btn btn-primary" ng-click="editMode(entry)">Edit</button><button class="btn btn-danger" ng-click="vm.deleteEntry(entry)">Delete</button></td>
 
                 </tr>
             </tbody>

@@ -33,7 +33,7 @@ router.get('/getProject', (req, res) => {
 
 
 router.get('/getEntry', (req, res) => {
-    pool.query(`SELECT P."project_name", H."entry", H."date", H."startTime", h."endTime",
+    pool.query(`SELECT P."project_name", H."entry", H."date", H."startTime", H."endTime", H."id",
                     EXTRACT(HOUR FROM (H."endTime" - H."startTime")) AS hours, 
                     EXTRACT(MINUTE FROM (H."endTime" - H."startTime")) as minutes
                 FROM project AS P
@@ -49,6 +49,21 @@ router.get('/getEntry', (req, res) => {
             res.sendStatus(500);
         });
 });
+
+router.delete('/:id', (req, res) => {
+    console.log('Reached deleteEntry Router?')
+    const history = req.params.id;
+    console.log(history)
+    pool.query (`DELETE FROM "history"
+                WHERE "id" = $1;`, [history])
+        .then((results) => {
+            res.send(results.rows);
+        })
+        .catch((error) => {
+            console.log('error on DELETE route', error);
+            res.sendStatus(500);
+        })
+})
 
 
 module.exports = router;
