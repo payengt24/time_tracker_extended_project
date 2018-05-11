@@ -2,7 +2,8 @@ app.controller('EntryController', function ($http, EntryService) {
     console.log('EntryController works')
     var self = this;
 
-    self.projectList = EntryService.projectList;
+    self.project = EntryService.project;
+    self.history = EntryService.history;
  
 //POST to add entry
 
@@ -17,11 +18,12 @@ app.controller('EntryController', function ($http, EntryService) {
     if(m < 10) m = '0' + m; 
 
     // set the default time to now
-    self.startTime = h + ':' + m;
+    // self.startTime = h + ':' + m;
     
     // set the default date to now
     self.entry = {
-        date: new Date()
+        date: new Date(),
+        // startTime: d
     }
 //-----end Time/Date-----
 

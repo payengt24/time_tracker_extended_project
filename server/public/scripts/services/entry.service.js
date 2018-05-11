@@ -2,7 +2,8 @@ app.service('EntryService', function ($http) {
     console.log('EntryService is loaded')
 
     var self = this;
-    self.projectList = {list: [] };
+    self.project = {list: [] };
+    self.history = {list: []};
 
     // POST to add entry to database
     self.addEntry = function (entry) {
@@ -30,7 +31,7 @@ app.service('EntryService', function ($http) {
         })
             .then(function (response) {
                 console.log('my response', response.data);
-                self.projectList.list = response.data;
+                self.project.list = response.data;
             })
             .catch(function (error) {
                 console.log('Error on GET EntryService', error)
@@ -44,8 +45,8 @@ app.service('EntryService', function ($http) {
             url: '/entry/getEntry'
         })
             .then(function (response) {
-                console.log('my response', response.data);
-                self.projectList.list = response.data;
+                console.log('my response for getAllEntry in service', response.data);
+                self.history.list = response.data;
             })
             .catch(function (error) {
                 console.log('Error on GET EntryService', error)

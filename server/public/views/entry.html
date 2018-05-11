@@ -17,7 +17,7 @@
                     <!-- <pre>{{vm.projectList |json }}</pre> -->
                     <select class="form-control" ng-model="vm.entry.project_id">
                         <!-- <option disabled selected>Select Project</option> -->
-                        <option ng-repeat= "project in vm.projectList.list" value="{{project.id}}">{{project.project_name}}</option>
+                        <option ng-repeat= "project in vm.project.list" value="{{project.id}}">{{project.project_name}}</option>
                     </select>
                 </div>
                 <div class="col">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col">
                     <label>Start Time</label>
-                    <input type="time" class="form-control"  required ng-model="vm.entry.startTime" value="{{vm.startTime}}">
+                    <input type="time" class="form-control"  required ng-model="vm.entry.startTime">
                 </div>
                 <div class="col">
                     <label>End Time</label>
@@ -58,15 +58,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="entry in vm.projectList.list">
+                    <!-- <pre>{{vm | json}}</pre> -->
+                <tr ng-repeat="entry in vm.history.list">
                     <td><input type="text" ng-model="entry.entry"></td>
-                    <td><input type="text" ng-model="entry.project_id"></td>
-                    <td><input type="text" ng-model="entry.date"></td>
-                    <td><input type="text" ng-model="entry.hours"></td>
-                    
-                    
-                    
-                    
+                    <td><input type="text" ng-model="entry.project_name"></td>
+                    <td><input type="text" ng-model="entry.date | date: MM-dd-yyyy"></td>
+                    <td><input type="text" value="{{entry.hours + '.' + (entry.minutes/60) * 10}}"></td>
                     <td><button class="btn btn-primary">Edit</button><button class="btn btn-danger">Delete</button></td>
 
                 </tr>

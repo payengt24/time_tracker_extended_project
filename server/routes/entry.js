@@ -32,21 +32,23 @@ router.get('/getProject', (req, res) => {
 })
 
 
-// router.get('/getEntry', (req, res) => {
-//     pool.query(`SELECT P.name AS project_name, P.id
-//                 FROM project
-//                 SELECT array_agg(E.name) AS entry, date, startTime, endTime, 
-//                 FROM history
-//                 RIGHT JOIN project ON  `)
-//         .then((results) => {
-//             console.log(results.rows);
-//             res.send(results.rows)
-//         })
-//         .catch((error) => {
-//             console.log('error with POST', error);
-//             res.sendStatus(500);
-//         });
-// });
+router.get('/getEntry', (req, res) => {
+    pool.query(`SELECT P."project_name", H."entry", H."date", H."startTime", h."endTime",
+                    EXTRACT(HOUR FROM (H."endTime" - H."startTime")) AS hours, 
+                    EXTRACT(MINUTE FROM (H."endTime" - H."startTime")) as minutes
+                FROM project AS P
+                INNER JOIN history AS H ON H.project_id = P.id
+                ORDER BY P.project_name
+                `)
+        .then((results) => {
+            console.log(results.rows);
+            res.send(results.rows)
+        })
+        .catch((error) => {
+            console.log('error with gET', error);
+            res.sendStatus(500);
+        });
+});
 
 
 module.exports = router;
