@@ -26,13 +26,22 @@
                         <div>
                             <tr ng-repeat="project in vm.projectList.list">
 
-                                <td><input type="text" ng-model="project.project_name"></td>
-                                <td><input type="text" ng-model="project.project_name"></td>
                                 <td>
-                                    <button class="btn btn-info" ng-click="vm.editMode(project)" ng-if="!project.edit">Edit</button>
-                                    <button class="btn btn-warning" ng-click="vm.cancelEditMode(project)" ng-if="project.edit">Cancel</button>
-                                    <button class="btn btn-primary" ng-click="vm.saveProject(project)" ng-if="project.edit">Save</button>
-                                    <button class="btn btn-danger" ng-click="vm.deleteProject(project)" ng-if="!project.edit">Delete</button>
+                                    <input type="text" ng-model="project.project_name">
+                                </td>
+                                <td>
+                                    <input type="text" ng-model="project.project_name">
+                                </td>
+                                <td>
+                                    
+                                    <div ng-if="project.edit">
+                                            <button class="btn btn-warning" ng-click="vm.cancelEditMode(project)" >Cancel</button>
+                                            <button class="btn btn-primary" ng-click="vm.saveProject(project)">Save</button>
+                                    </div>
+                                    <div ng-if="!project.edit">
+                                            <button class="btn btn-info" ng-click="vm.editMode(project)" >Edit</button>
+                                            <button class="btn btn-danger" ng-click="vm.deleteProject(project)">Delete</button>
+                                    </div>
                                 </td>
 
                             </tr>
@@ -44,4 +53,3 @@
         </table>
     </div>
 </div>
-

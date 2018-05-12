@@ -30,12 +30,27 @@ router.get('/getProject', (req, res) => {
         });
 });
 
-
+// router.get('/getProject', (req, res) => {
+//     console.log('reached getProject in routes project.js')
+//     pool.query(`SELECT P."project_name", H."startTime", H."endTime",
+//                 EXTRACT(HOUR FROM (H."endTime" - H."startTime")) AS hours, 
+//                 EXTRACT(MINUTE FROM (H."endTime" - H."startTime")) AS minutes
+//                 INNER JOIN history AS H ON H.project_id = P.id
+//                 ORDER BY P.project_name`)
+//         .then((results) => {
+//             console.log(results.rows);
+//             res.send(results.rows)
+//         })
+//         .catch((error) => {
+//             console.log('error with POST', error);
+//             res.sendStatus(500);
+//         });
+// });
 
 router.delete('/:id', (req, res) => {
     console.log('Reached deleteProject Router?')
     const project = req.params.id;
-    pool.query (`DELETE FROM "project"
+    pool.query(`DELETE FROM "project"
                 WHERE "id" = $1;`, [project])
         .then((results) => {
             res.send(results.rows);

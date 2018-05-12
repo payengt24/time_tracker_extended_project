@@ -2,8 +2,8 @@ app.service('EntryService', function ($http) {
     console.log('EntryService is loaded')
 
     var self = this;
-    self.project = {list: [] };
-    self.history = {list: []};
+    self.project = { list: [] };
+    self.history = { list: [] };
 
     // POST to add entry to database
     self.addEntry = function (entry) {
@@ -23,7 +23,7 @@ app.service('EntryService', function ($http) {
     }
 
     //request to GET Project so it can be place in ENTRY selector
-    self.getProject = function (){
+    self.getProject = function () {
         console.log('getting project for select');
         $http({
             method: 'GET',
@@ -55,9 +55,9 @@ app.service('EntryService', function ($http) {
 
 
     self.deleteEntry = function (entry) {
-        return $http.delete('/entry/' + entry.id).then(function(response){
+        return $http.delete('/entry/' + entry.id).then(function (response) {
             self.getAllEntry();
-        }).catch(function(err){
+        }).catch(function (err) {
             console.log('Error deleting message', err)
         })
     }
@@ -79,8 +79,8 @@ app.service('EntryService', function ($http) {
             });
     }
 
-      //toggle history edit to false
-      self.editMode = function (history) {
+    //toggle history edit to false
+    self.editMode = function (history) {
         history.edit = true;
     }
 

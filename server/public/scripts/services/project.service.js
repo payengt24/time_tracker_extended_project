@@ -2,9 +2,9 @@ app.service('ProjectService', function ($http) {
     console.log('ProjectService is loaded')
 
     var self = this;
-    self.projectList = {list: [] };
- 
-//--POST to add project to database
+    self.projectList = { list: [] };
+
+    //--POST to add project to database
     self.addProject = function (project) {
         console.log(project);
         $http({
@@ -21,7 +21,7 @@ app.service('ProjectService', function ($http) {
             })
     }
 
-//--GET all project    
+    //--GET all project    
     self.getAllProject = function () {
         console.log('getAllProject');
         $http({
@@ -38,11 +38,11 @@ app.service('ProjectService', function ($http) {
     }
 
 
-    
+
     self.deleteProject = function (project) {
-        return $http.delete('/project/' + project.id).then(function(response){
+        return $http.delete('/project/' + project.id).then(function (response) {
             self.getAllProject();
-        }).catch(function(err){
+        }).catch(function (err) {
             console.log('Error deleting message', err)
         })
     }

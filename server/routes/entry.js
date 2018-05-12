@@ -70,8 +70,8 @@ router.put('/saveHistory', (req, res) => {
     const history = req.body;
     console.log('my history', history)
     pool.query(`UPDATE "history" 
-                SET "entry" = $1, "date" = $2, "startTime" = $3, "endTime" = $4         
-                WHERE "id" = $5`, [history.entry, history.date, history.startTime, history.endTime, history.id])
+                SET "entry" = $1, "date" = $2, "startTime" = $3, "endTime" = $4, "hour" = $5         
+                WHERE "id" = $6`, [history.entry, history.date, history.startTime, history.endTime, history.hour, history.id])
         .then((results) => {
             res.sendStatus(200);
         })

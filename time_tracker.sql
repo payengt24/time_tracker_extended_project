@@ -7,11 +7,12 @@ CREATE TABLE project (
 CREATE TABLE history (
 
     "id" serial PRIMARY KEY,
-    "entry" VARCHAR (250),
-    "date" DATE,
-    "startTime" TIME, 
-    "endTime" TIME,
-    "project_id" INT references "project" (id)
+    "entry" VARCHAR (250) NOT NULL,
+    "date" DATE NOT NULL,
+    "startTime" TIME NOT NULL, 
+    "endTime" TIME NOT NULL,
+    "hour" REAL NOT NULL,
+    "project_id" INT references "project" (id) NOT NULL
 );
 
 

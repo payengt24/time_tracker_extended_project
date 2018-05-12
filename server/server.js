@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 app.use(express.static('server/public'));
 
-const pool = require ('./modules/pool')
+const pool = require('./modules/pool')
 
 var project = require('./routes/project');
 var history = require('./routes/entry');

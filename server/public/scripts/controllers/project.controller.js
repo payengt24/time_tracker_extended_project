@@ -1,15 +1,17 @@
-app.controller('ProjectController', function ($http, ProjectService) {
+app.controller('ProjectController', function ($http, ProjectService, EntryService) {
     console.log('ProjectController works')
     var self = this;
 
     self.projectList = ProjectService.projectList;
+
+    self.entryService = EntryService;
 
     self.addProject = function (project) {
         ProjectService.addProject(project);
 
     }
 
-      //toggle project edit to false
+    //toggle project edit to false
     self.editMode = function (project) {
         project.edit = true;
     }
@@ -18,7 +20,7 @@ app.controller('ProjectController', function ($http, ProjectService) {
         project.edit = false;
     }
 
- 
+
 
     ProjectService.getAllProject();
 
@@ -32,4 +34,10 @@ app.controller('ProjectController', function ($http, ProjectService) {
         console.log(project);
         ProjectService.saveProject(project);
     }
+
+    self.getAllEntryData = function () {
+        self.entryService.getAllEntry();
+    }
+
 })
+
