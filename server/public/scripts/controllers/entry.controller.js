@@ -1,4 +1,4 @@
-app.controller('EntryController', function ($http, EntryService) {
+app.controller('EntryController', function ($http, $mdDialog, EntryService) {
     console.log('EntryController works')
     var self = this;
 
@@ -39,6 +39,23 @@ app.controller('EntryController', function ($http, EntryService) {
     self.deleteEntry = function (entry) {
         console.log('Am I in the deleteEntry for the controller?')
         EntryService.deleteEntry(entry);
+    }
+
+
+
+    self.saveHistory = function (entry) {
+        console.log(entry);
+        EntryService.saveHistory(entry);
+    }
+
+    self.editMode = function (entry) {
+        console.log('reached editMode in controller');
+        EntryService.editMode(entry);
+    }
+
+    self.cancelEditMode = function (entry) {
+        console.log('reached cancelEditMode in controller');
+        EntryService.cancelEditMode(entry);
     }
 
 

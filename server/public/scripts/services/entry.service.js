@@ -62,4 +62,30 @@ app.service('EntryService', function ($http) {
         })
     }
 
+    self.saveHistory = function (entry) {
+        console.log('History to save/PUT', entry)
+        $http({
+            method: 'PUT',
+            url: '/entry/saveHistory',
+            data: entry
+        })
+            .then(function (response) {
+                self.edit = false
+                console.log('response from put', response);
+                self.getAllEntry();
+            })
+            .catch(function (error) {
+                console.log('error on PUT for history service', error);
+            });
+    }
+
+      //toggle history edit to false
+      self.editMode = function (history) {
+        history.edit = true;
+    }
+
+    self.cancelEditMode = function (history) {
+        history.edit = false;
+    }
+
 })

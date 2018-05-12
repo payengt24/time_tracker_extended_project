@@ -29,8 +29,10 @@
                                 <td><input type="text" ng-model="project.project_name"></td>
                                 <td><input type="text" ng-model="project.project_name"></td>
                                 <td>
-                                    <button class="btn btn-primary">Edit</button>
-                                    <button class="btn btn-danger" ng-click="vm.deleteProject(project)">Delete</button>
+                                    <button class="btn btn-info" ng-click="vm.editMode(project)" ng-hide="project.edit">Edit</button>
+                                    <button class="btn btn-warning" ng-click="vm.cancelEditMode(project)" ng-show="project.edit">Cancel</button>
+                                    <button class="btn btn-primary" ng-click="vm.saveProject(project)" ng-show="project.edit">Save</button>
+                                    <button class="btn btn-danger" ng-click="vm.deleteProject(project)" ng-if="!project.edit">Delete</button>
                                 </td>
 
                             </tr>

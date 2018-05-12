@@ -47,4 +47,31 @@ app.service('ProjectService', function ($http) {
         })
     }
 
+    self.saveProject = function (project) {
+        console.log('Project to save/PUT', project)
+        $http({
+            method: 'PUT',
+            url: '/project/saveProject',
+            data: project
+        })
+            .then(function (response) {
+                self.edit = false
+                console.log('response from put', response);
+                self.getAllProject();
+            })
+            .catch(function (error) {
+                console.log('error on PUT for project service', error);
+            });
+    }
+
+
+  //toggle project edit to false
+    self.editMode = function (project) {
+        project.edit = true;
+    }
+
+    self.cancelEditMode = function (project) {
+        project.edit = false;
+    }
+
 })

@@ -8,7 +8,7 @@ router.post('/addEntry', (req, res) => {
     console.log("in router: ", entry.date);
     pool.query(`INSERT INTO "history" ("entry", "date", "startTime", "endTime", "project_id")
                 VALUES ($1, $2, $3, $4, $5)`, [entry.entry, entry.date, entry.startTime.split('T')[1].split('.')[0], entry.endTime.split('T')[1].split('.')[0], entry.project_id])
-         .then((results) => {
+        .then((results) => {
             console.log(results.rows);
             res.send(results.rows)
         })
@@ -21,14 +21,14 @@ router.post('/addEntry', (req, res) => {
 router.get('/getProject', (req, res) => {
     console.log("Server: getting project list");
     pool.query(`SELECT * FROM "project"`)
-    .then((results) => {
-        console.log(results.rows);
-        res.send(results.rows)
-    })
-    .catch((error) => {
-        console.log('error with get', error);
-        res.sendStatus(500);
-    });
+        .then((results) => {
+            console.log(results.rows);
+            res.send(results.rows)
+        })
+        .catch((error) => {
+            console.log('error with get', error);
+            res.sendStatus(500);
+        });
 })
 
 
@@ -54,7 +54,7 @@ router.delete('/:id', (req, res) => {
     console.log('Reached deleteEntry Router?')
     const history = req.params.id;
     console.log(history)
-    pool.query (`DELETE FROM "history"
+    pool.query(`DELETE FROM "history"
                 WHERE "id" = $1;`, [history])
         .then((results) => {
             res.send(results.rows);
@@ -63,6 +63,22 @@ router.delete('/:id', (req, res) => {
             console.log('error on DELETE route', error);
             res.sendStatus(500);
         })
+})
+
+router.put('/saveHistory', (req, res) => {
+    console.log('reached router saveHistory');
+    const history = req.body;
+    console.log('my history', history)
+    pool.query(`UPDATE "history" 
+                SET "entry" = $1, "date" = $2, "startTime" = $3, "endTime" = $4         
+                WHERE "id" = $5`, [history.entry, history.date, history.startTime, history.endTime, history.id])
+        .then((results) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error with saveHistory PUT router', error);
+            res.sendStatus(500);
+        });
 })
 
 
