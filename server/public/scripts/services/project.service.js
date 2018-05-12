@@ -55,7 +55,7 @@ app.service('ProjectService', function ($http) {
             data: project
         })
             .then(function (response) {
-                self.edit = false
+                response.config.data.edit = false
                 console.log('response from put', response);
                 self.getAllProject();
             })
@@ -63,15 +63,4 @@ app.service('ProjectService', function ($http) {
                 console.log('error on PUT for project service', error);
             });
     }
-
-
-  //toggle project edit to false
-    self.editMode = function (project) {
-        project.edit = true;
-    }
-
-    self.cancelEditMode = function (project) {
-        project.edit = false;
-    }
-
 })

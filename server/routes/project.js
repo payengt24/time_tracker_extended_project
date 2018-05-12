@@ -58,7 +58,7 @@ router.put('/saveProject', (req, res) => {
             res.sendStatus(200);
         })
         .catch((error) => {
-            console.log('error with saveProject PUT router', error);
+            console.log('error with saveProject PUT', error);
             res.sendStatus(500);
         });
 })

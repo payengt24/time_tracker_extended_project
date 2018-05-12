@@ -8,6 +8,16 @@ app.controller('ProjectController', function ($http, ProjectService) {
         ProjectService.addProject(project);
 
     }
+
+      //toggle project edit to false
+    self.editMode = function (project) {
+        project.edit = true;
+    }
+
+    self.cancelEditMode = function (project) {
+        project.edit = false;
+    }
+
  
 
     ProjectService.getAllProject();
@@ -22,15 +32,4 @@ app.controller('ProjectController', function ($http, ProjectService) {
         console.log(project);
         ProjectService.saveProject(project);
     }
-
-    self.editMode = function (project) {
-        console.log('reached editMode in controller');
-        ProjectService.editMode(project);
-    }
-
-    self.cancelEditMode = function (project) {
-        console.log('reached cancelEditMode in controller');
-        ProjectService.cancelEditMode(project);
-    }
-
 })
