@@ -14,9 +14,7 @@
             <div class="row">
                 <div class="col">
                     <label>Project</label>
-                    <!-- <pre>{{vm.projectList |json }}</pre> -->
                     <select class="form-control" ng-model="vm.entry.project_id">
-                        <!-- <option disabled selected>Select Project</option> -->
                         <option ng-repeat="project in vm.project.list" value="{{project.id}}">{{project.project_name}}</option>
                     </select>
                 </div>
@@ -63,11 +61,17 @@
                     <td>
                         <input type="text" ng-model="entry.entry">
                     </td>
-                    <td>
+                    <td ng-if="!entry.edit">
                         <input type="text" ng-model="entry.project_name">
                     </td>
+                    <td ng-if="entry.edit">
+                        <select ng-model="vm.entry.project_id">
+                            <option ng-repeat="project in vm.project.list" value="{{project.id}}">{{project.project_name}}</option>
+                        </select>
+                    </td>
+
                     <td>
-                        <input type="text" ng-model="entry.date" ng-value="entry.date | date: MM-dd-yyyy">
+                        <md-datepicker type="text" ng-model="entry.date" ng-value="entry.date | date: MM-dd-yyyy"></md-datepicker>
                     </td>
                     <td>
                         <input type="text" value="{{entry.hours + '.' + ((entry.minutes/60) * 10).toFixed(0)}}">
@@ -88,3 +92,4 @@
         </table>
     </div>
 </div>
+
