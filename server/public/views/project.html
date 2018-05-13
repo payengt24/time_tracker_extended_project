@@ -17,8 +17,20 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Project</th>
-                    <th scope="col">Total Hours</th>
+                    <th scope="col">
+                        <a ng-click="vm.sortType = 'project_name'; vm.sortReverse = !vm.sortReverse">
+                            Project
+                            <span ng-show="vm.sortType == 'project' && !vm.sortReverse" class="fa fa-caret-down"></span>
+                            <span ng-show="vm.sortType == 'project' && vm.sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a ng-click="vm.sortType = 'hour'; vm.sortReverse = !vm.sortReverse">
+                            Total Hours
+                            <span ng-show="vm.sortType == 'Hours' && !vm.sortReverse" class="fa fa-caret-down"></span>
+                            <span ng-show="vm.sortType == 'Hours' && vm.sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -26,7 +38,7 @@
                 <div class="col">
                     <tbody>
                         <div>
-                            <tr ng-repeat="project in vm.projectList.list">
+                            <tr ng-repeat="project in vm.projectList.list | orderBy:vm.sortType:vm.sortReverse">
 
                                 <td ng-if="!project.edit">
                                     <input type="text" disabled ng-model="project.project_name">

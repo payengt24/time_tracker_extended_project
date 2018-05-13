@@ -6,6 +6,9 @@ app.controller('ProjectController', function ($http, ProjectService, EntryServic
 
     self.entryService = EntryService;
 
+    self.sortType = 'project'; // set the default sort type
+    self.sortReverse = false;  // set the default sort order
+
     self.addProject = function (project) {
         ProjectService.addProject(project);
 
