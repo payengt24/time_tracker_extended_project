@@ -1,4 +1,4 @@
-app.controller('ProjectController', function ($http, ProjectService, EntryService) {
+app.controller('ProjectController', function (ProjectService, EntryService) {
     console.log('ProjectController works')
     var self = this;
 
@@ -30,8 +30,25 @@ app.controller('ProjectController', function ($http, ProjectService, EntryServic
 
 
     self.deleteProject = function (project) {
-        console.log('Am I in the deleteProject for the controller?')
-        ProjectService.deleteProject(project);
+        console.log('Am I in the deleteProject for the controller?');
+        Swal({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this project once deleted!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it'
+          }).then((result) => {
+            if (result.value) {
+                ProjectService.deleteProject(project);
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              Swal(
+                'Cancelled',
+                'Your project is safe :)',
+                'error'
+              )
+            }
+          });
     }
 
     self.saveProject = function (project) {

@@ -28,10 +28,12 @@
     "angular-messages": "^1.6.10",
     "angular-route": "^1.6.10",
     "angular-sanitize": "^1.6.10",
+    "angular-sweetalert": "^1.1.2",
     "body-parser": "^1.18.2",
     "chart.js": "^2.7.2",
     "express": "^4.16.3",
     "moment": "^2.22.1",
-    "pg": "^7.4.3"
+    "pg": "^7.4.3",
+    "sweetalert2": "^7.20.1"
   }
 }

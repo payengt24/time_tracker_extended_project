@@ -64,6 +64,7 @@ app.service('ProjectService', function ($http) {
 
     self.deleteProject = function (project) {
         return $http.delete('/project/' + project.id).then(function (response) {
+            Swal("Deleted!", "Your Project has been deleted.", "success");
             self.getAllProject();
         }).catch(function (err) {
             console.log('Error deleting message', err)

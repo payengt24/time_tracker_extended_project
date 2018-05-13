@@ -66,7 +66,24 @@ app.controller('EntryController', function ($http, $mdDialog, EntryService) {
 
     self.deleteEntry = function (entry) {
         console.log('Am I in the deleteEntry for the controller?')
-        EntryService.deleteEntry(entry);
+        Swal({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this entry once deleted!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it'
+          }).then((result) => {
+            if (result.value) {
+                EntryService.deleteEntry(entry);
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              Swal(
+                'Cancelled',
+                'Your entry is safe :)',
+                'error'
+              )
+            }
+          });
     }
 
     // .split('T')[1].split('.')[0]
