@@ -5,6 +5,10 @@ app.controller('EntryController', function ($http, $mdDialog, EntryService) {
     self.project = EntryService.project;
     self.history = EntryService.history;
 
+
+    self.sortType = 'Entry'; // set the default sort type
+    self.sortReverse = false;  // set the default sort order
+
     //POST to add entry
 
     self.addEntry = function (entry) {

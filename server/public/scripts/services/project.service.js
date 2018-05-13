@@ -38,21 +38,21 @@ app.service('ProjectService', function ($http) {
             });
     }
 
-        // //request to GET Hours so it can be place in Project
-        // self.getHour = function () {
-        //     console.log('getting hours');
-        //     $http({
-        //         method: 'GET',
-        //         url: '/entry/getHour'
-        //     })
-        //         .then(function (response) {
-        //             console.log('my response', response.data);
-        //             self.hour.list = response.data;
-        //         })
-        //         .catch(function (error) {
-        //             console.log('Error on GET hour ProjectService', error)
-        //         });
-        // }
+    // //request to GET Hours so it can be place in Project
+    // self.getHour = function () {
+    //     console.log('getting hours');
+    //     $http({
+    //         method: 'GET',
+    //         url: '/entry/getHour'
+    //     })
+    //         .then(function (response) {
+    //             console.log('my response', response.data);
+    //             self.hour.list = response.data;
+    //         })
+    //         .catch(function (error) {
+    //             console.log('Error on GET hour ProjectService', error)
+    //         });
+    // }
 
 
 
