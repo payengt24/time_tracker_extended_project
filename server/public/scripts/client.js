@@ -1,4 +1,4 @@
-var app = angular.module('timeTrackerApp', ['ngRoute', 'ngMaterial', 'ngAnimate', 'ngMessages', 'ngAria', 'ngSanitize']);
+var app = angular.module('timeTrackerApp', ['ngRoute', 'ngMaterial', 'ngAnimate', 'ngMessages', 'ngAria', 'ngSanitize', 'chart.js']);
 
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {

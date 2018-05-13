@@ -52,9 +52,9 @@
                     <th scope="col">
                         <a ng-click="vm.sortType = 'entry'; vm.sortReverse = !vm.sortReverse">
                             Entry
+                            <span ng-show="vm.sortType == 'entry' && !vm.sortReverse" class="fa fa-caret-down"></span>
+                            <span ng-show="vm.sortType == 'entry' && vm.sortReverse" class="fa fa-caret-down"></span>
                         </a>
-                        <span ng-show="vm.sortType == 'entry' && !vm.sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="vm.sortType == 'entry' && vm.sortReverse" class="fa fa-caret-up"></span>
                     </th>
                     <th scope="col">
                         <a ng-click="vm.sortType = 'project_name'; vm.sortReverse = !vm.sortReverse">

@@ -3,7 +3,10 @@ app.service('ProjectService', function ($http) {
 
     var self = this;
     self.projectList = { list: [] };
+
     self.hour = { list: [] };
+
+
 
     //--POST to add project to database
     self.addProject = function (project) {
@@ -24,14 +27,17 @@ app.service('ProjectService', function ($http) {
 
     //--GET all project    
     self.getAllProject = function () {
+
         console.log('getAllProject');
-        $http({
+
+        return $http({
             method: 'GET',
             url: '/project/getProject'
         })
             .then(function (response) {
                 console.log('my response', response.data);
-                self.projectList.list = response.data;
+                // self.projectList.list = response.data;
+                return response.data;
             })
             .catch(function (error) {
                 console.log('Error on GET ProjectService', error)
