@@ -6,3 +6,12 @@ button {
 span {
     color: white;
 }
+
+
+
+#hourLabelCol {
+    padding-right: 0px;
+}
+#chartCol {
+    padding-left: 0px;
+}
