@@ -79,13 +79,4 @@ app.service('EntryService', function ($http) {
             });
     }
 
-    //toggle history edit to false
-    self.editMode = function (history) {
-        history.edit = true;
-    }
-
-    self.cancelEditMode = function (history) {
-        history.edit = false;
-    }
-
 })

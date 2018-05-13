@@ -10,12 +10,12 @@ app.controller('EntryController', function ($http, $mdDialog, EntryService) {
     self.addEntry = function (entry) {
         console.log(entry);
         // entry.hour = entry.startTime.split('T')[1].split('.')[0] - entry.endTime.split('T')[1].split('.')[0];
-        entry.hour = timeDifference(entry.startTime,entry.endTime);
+        entry.hour = timeDifference(entry.startTime, entry.endTime);
         console.log(entry);
         EntryService.addEntry(entry);
     }
     //get time Difference
-    function timeDifference(startTime, endTime){
+    function timeDifference(startTime, endTime) {
         var startTimeHours = startTime.getHours();
         var endTimeHours = endTime.getHours();
         var endTimeMinutes = endTime.getMinutes();
@@ -25,7 +25,7 @@ app.controller('EntryController', function ($http, $mdDialog, EntryService) {
         var hours = endTimeHours - startTimeHours;
         var minutes = endTimeMinutes - startTimeMinutes;
 
-        minutes = ((minutes/60) * 100).toFixed(0);
+        minutes = ((minutes / 60) * 100).toFixed(0);
         var timeDiff = hours + "." + minutes;
         console.log("hours: ", hours);
         console.log("minutes: ", minutes);
@@ -65,21 +65,29 @@ app.controller('EntryController', function ($http, $mdDialog, EntryService) {
         EntryService.deleteEntry(entry);
     }
 
+    // .split('T')[1].split('.')[0]
+
 
 
     self.saveHistory = function (entry) {
+        entry.hour = timeDifference(entry.startTime, entry.endTime);
         console.log(entry);
         EntryService.saveHistory(entry);
     }
 
     self.editMode = function (entry) {
         console.log('reached editMode in controller');
-        EntryService.editMode(entry);
+        // var startTime = new Date();
+        // startTime.hour = entry.startTime.split('T')[1].split('.')[0].split(':')[0];
+        // startTime.minutes = entry.startTime.split('T')[1].split('.')[0].split(':')[1];
+        // entry.startTime = startTime;
+
+        entry.edit = true;
     }
 
     self.cancelEditMode = function (entry) {
         console.log('reached cancelEditMode in controller');
-        EntryService.cancelEditMode(entry);
+        entry.edit = false;
     }
 
 

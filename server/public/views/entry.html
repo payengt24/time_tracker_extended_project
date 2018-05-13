@@ -59,10 +59,10 @@
                 <!-- <pre>{{vm | json}}</pre> -->
                 <tr ng-repeat="entry in vm.history.list">
                     <td>
-                        <input type="text" ng-model="entry.entry">
+                        <input type="text" disabled="entry.edit" ng-model="entry.entry">
                     </td>
                     <td ng-if="!entry.edit">
-                        <input type="text" ng-model="entry.project_name">
+                        <input type="text" disabled="entry.edit" ng-model="entry.project_name">
                     </td>
                     <td ng-if="entry.edit">
                         <select ng-model="vm.entry.project_id">
@@ -71,10 +71,13 @@
                     </td>
 
                     <td>
-                        <md-datepicker type="text" ng-model="entry.date" ng-value="entry.date | date: MM-dd-yyyy"></md-datepicker>
+                        <md-datepicker type="text" disabled="entry.edit" ng-model="entry.date" ng-value="entry.date | date: MM-dd-yyyy"></md-datepicker>
                     </td>
                     <td>
-                        <input type="text" ng-model="entry.hour">
+                        <input ng-if="!entry.edit" disabled type="text" ng-model="entry.hour">
+                        <input type="time" ng-if="entry.edit" ng-model="entry.startTime">
+                        <span ng-if="entry.edit">-</span>
+                        <input type="time" ng-if="entry.edit" ng-model="entry.endTime">
                     </td>
 
                     <td>

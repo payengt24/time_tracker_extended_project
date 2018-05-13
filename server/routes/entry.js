@@ -7,7 +7,7 @@ router.post('/addEntry', (req, res) => {
     const entry = req.body;
     console.log("Object Data POST: ", entry);
     pool.query(`INSERT INTO "history" ("entry", "date", "startTime", "endTime", "hour", "project_id")
-                VALUES ($1, $2, $3, $4, $5, $6)`, [entry.entry, entry.date, entry.startTime.split('T')[1].split('.')[0], entry.endTime.split('T')[1].split('.')[0], entry.hour, entry.project_id])
+                VALUES ($1, $2, $3, $4, $5, $6)`, [entry.entry, entry.date, entry.startTime, entry.endTime, entry.hour, entry.project_id])
         .then((results) => {
             console.log(results.rows);
             res.send(results.rows)
