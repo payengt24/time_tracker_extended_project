@@ -36,7 +36,7 @@ app.service('ProjectService', function ($http) {
         })
             .then(function (response) {
                 console.log('my response', response.data);
-                // self.projectList.list = response.data;
+                self.projectList.list = response.data;
                 return response.data;
             })
             .catch(function (error) {

@@ -5,17 +5,17 @@ app.controller('ReportController', function (ProjectService) {
     self.data = [];
     self.labels = [];
     
-    // self.projectList = ProjectService.projectList;
+    self.projectList = ProjectService.projectList;
     ProjectService.getAllProject()
-        .then(function (projectList) {
+        .then(function () {
             console.log('data has return');
             // console.log('project list', project.list);
-            self.projectList = projectList;
+            // self.projectList = projectList;
             self.loadProjectName();
             self.loadProjectHours();
             // console.log('label list', self.labels);
 
-            console.log(projectList);
+            // console.log(projectList);
             
         })
 
@@ -27,9 +27,9 @@ app.controller('ReportController', function (ProjectService) {
 
     self.loadProjectName = function () {
         console.log("loading projectName into label", self.projectList.list);
-        for (var i = 0; i < self.projectList.length; i++) {
-            console.log("pushing to list: ", self.projectList[i]['project_name']);
-            self.labels.push(self.projectList[i]['project_name']);
+        for (var i = 0; i < self.projectList.list.length; i++) {
+            console.log("pushing to list: ", self.projectList.list[i]['project_name']);
+            self.labels.push(self.projectList.list[i]['project_name']);
         }
     }
 
@@ -44,9 +44,9 @@ app.controller('ReportController', function (ProjectService) {
 
     self.loadProjectHours = function () {
         console.log('loadProjectHours into data');
-        for (var i = 0; i < self.projectList.length; i++) {
-            console.log("pushing to list: ", self.projectList[i]['totalhour']);
-            self.data.push(self.projectList[i]['totalhour']);
+        for (var i = 0; i < self.projectList.list.length; i++) {
+            console.log("pushing to list: ", self.projectList.list[i]['totalhour']);
+            self.data.push(self.projectList.list[i]['totalhour']);
         }
     }
 
