@@ -38,17 +38,17 @@ app.controller('ProjectController', function (ProjectService, EntryService) {
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!',
             cancelButtonText: 'No, keep it'
-          }).then((result) => {
+        }).then((result) => {
             if (result.value) {
                 ProjectService.deleteProject(project);
             } else if (result.dismiss === Swal.DismissReason.cancel) {
-              Swal(
-                'Cancelled',
-                'Your project is safe :)',
-                'error'
-              )
+                Swal(
+                    'Cancelled',
+                    'Your project is safe :)',
+                    'error'
+                )
             }
-          });
+        });
     }
 
     self.saveProject = function (project) {

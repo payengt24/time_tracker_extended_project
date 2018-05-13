@@ -6,8 +6,8 @@ app.controller('EntryController', function ($http, $mdDialog, EntryService) {
     self.history = EntryService.history;
 
 
-    self.sortType     = 'Entry'; // set the default sort type
-    self.sortReverse  = false;  // set the default sort order
+    self.sortType = 'Entry'; // set the default sort type
+    self.sortReverse = false;  // set the default sort order
 
     //POST to add entry
 
@@ -73,17 +73,17 @@ app.controller('EntryController', function ($http, $mdDialog, EntryService) {
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!',
             cancelButtonText: 'No, keep it'
-          }).then((result) => {
+        }).then((result) => {
             if (result.value) {
                 EntryService.deleteEntry(entry);
             } else if (result.dismiss === Swal.DismissReason.cancel) {
-              Swal(
-                'Cancelled',
-                'Your entry is safe :)',
-                'error'
-              )
+                Swal(
+                    'Cancelled',
+                    'Your entry is safe :)',
+                    'error'
+                )
             }
-          });
+        });
     }
 
     // .split('T')[1].split('.')[0]

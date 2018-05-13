@@ -4,7 +4,7 @@ app.controller('ReportController', function (ProjectService) {
 
     self.data = [];
     self.labels = [];
-    
+
     self.projectList = ProjectService.projectList;
     ProjectService.getAllProject()
         .then(function () {
@@ -16,7 +16,7 @@ app.controller('ReportController', function (ProjectService) {
             // console.log('label list', self.labels);
 
             // console.log(projectList);
-            
+
         })
 
     console.log("project list in report: ", self.projectList);
