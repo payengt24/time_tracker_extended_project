@@ -3,6 +3,7 @@ app.service('ProjectService', function ($http) {
 
     var self = this;
     self.projectList = { list: [] };
+    self.hour = { list: [] };
 
     //--POST to add project to database
     self.addProject = function (project) {
@@ -37,6 +38,22 @@ app.service('ProjectService', function ($http) {
             });
     }
 
+        // //request to GET Hours so it can be place in Project
+        // self.getHour = function () {
+        //     console.log('getting hours');
+        //     $http({
+        //         method: 'GET',
+        //         url: '/entry/getHour'
+        //     })
+        //         .then(function (response) {
+        //             console.log('my response', response.data);
+        //             self.hour.list = response.data;
+        //         })
+        //         .catch(function (error) {
+        //             console.log('Error on GET hour ProjectService', error)
+        //         });
+        // }
+
 
 
     self.deleteProject = function (project) {
@@ -60,7 +77,7 @@ app.service('ProjectService', function ($http) {
                 self.getAllProject();
             })
             .catch(function (error) {
-                console.log('error on PUT for project service', error);
+                console.log('error on PUT for ProjectService', error);
             });
     }
 })

@@ -23,6 +23,7 @@ app.controller('ProjectController', function ($http, ProjectService, EntryServic
 
 
     ProjectService.getAllProject();
+    // ProjectService.getHour();
 
 
     self.deleteProject = function (project) {

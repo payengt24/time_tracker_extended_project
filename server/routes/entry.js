@@ -5,9 +5,9 @@ var pool = require('../modules/pool');
 router.post('/addEntry', (req, res) => {
     console.log("reach server router");
     const entry = req.body;
-    console.log("in router: ", entry.date);
-    pool.query(`INSERT INTO "history" ("entry", "date", "startTime", "endTime", "project_id")
-                VALUES ($1, $2, $3, $4, $5)`, [entry.entry, entry.date, entry.startTime.split('T')[1].split('.')[0], entry.endTime.split('T')[1].split('.')[0], entry.project_id])
+    console.log("Object Data POST: ", entry);
+    pool.query(`INSERT INTO "history" ("entry", "date", "startTime", "endTime", "hour", "project_id")
+                VALUES ($1, $2, $3, $4, $5, $6)`, [entry.entry, entry.date, entry.startTime.split('T')[1].split('.')[0], entry.endTime.split('T')[1].split('.')[0], entry.hour, entry.project_id])
         .then((results) => {
             console.log(results.rows);
             res.send(results.rows)
@@ -33,9 +33,7 @@ router.get('/getProject', (req, res) => {
 
 
 router.get('/getEntry', (req, res) => {
-    pool.query(`SELECT P."project_name", H."entry", H."date", H."startTime", H."endTime", H."id",
-                    EXTRACT(HOUR FROM (H."endTime" - H."startTime")) AS hours, 
-                    EXTRACT(MINUTE FROM (H."endTime" - H."startTime")) as minutes
+    pool.query(`SELECT P."project_name", H."entry", H."date", H."startTime", H."endTime", H."id", H."hour"
                 FROM project AS P
                 INNER JOIN history AS H ON H.project_id = P.id
                 ORDER BY P.project_name

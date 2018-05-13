@@ -19,7 +19,15 @@ router.post('/addProject', (req, res) => {
 
 router.get('/getProject', (req, res) => {
     console.log('reached getProject in routes project.js')
-    pool.query(`SELECT * FROM "project" ORDER BY id `)
+    pool.query(`SELECT          
+                P."project_name",
+                P."id",
+                COALESCE(SUM (H."hour"), 0) as totalHour
+                FROM "history" AS H
+                RIGHT JOIN "project" AS P ON P.id = H.project_id 
+                GROUP BY P."project_name", P."id"
+                ORDER BY P."project_name";
+                `)
         .then((results) => {
             console.log(results.rows);
             res.send(results.rows)
@@ -29,6 +37,20 @@ router.get('/getProject', (req, res) => {
             res.sendStatus(500);
         });
 });
+
+
+// router.get('/getHour', (req, res) => {
+//     console.log("Server: getting hours list");
+//     pool.query(`SELECT "hour FROM "history"`)
+//         .then((results) => {
+//             console.log(results.rows);
+//             res.send(results.rows)
+//         })
+//         .catch((error) => {
+//             console.log('error with get', error);
+//             res.sendStatus(500);
+//         });
+// })
 
 // router.get('/getProject', (req, res) => {
 //     console.log('reached getProject in routes project.js')

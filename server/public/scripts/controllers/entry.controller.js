@@ -8,14 +8,38 @@ app.controller('EntryController', function ($http, $mdDialog, EntryService) {
     //POST to add entry
 
     self.addEntry = function (entry) {
+        console.log(entry);
+        // entry.hour = entry.startTime.split('T')[1].split('.')[0] - entry.endTime.split('T')[1].split('.')[0];
+        entry.hour = timeDifference(entry.startTime,entry.endTime);
+        console.log(entry);
         EntryService.addEntry(entry);
     }
+    //get time Difference
+    function timeDifference(startTime, endTime){
+        var startTimeHours = startTime.getHours();
+        var endTimeHours = endTime.getHours();
+        var endTimeMinutes = endTime.getMinutes();
+        var startTimeMinutes = startTime.getMinutes();
+        var endTimeHours = endTime.getHours();
+        var endTimeMinutes = endTime.getMinutes();
+        var hours = endTimeHours - startTimeHours;
+        var minutes = endTimeMinutes - startTimeMinutes;
+
+        minutes = ((minutes/60) * 100).toFixed(0);
+        var timeDiff = hours + "." + minutes;
+        console.log("hours: ", hours);
+        console.log("minutes: ", minutes);
+        console.log("timeDiffer: ", timeDiff);
+        return timeDiff;
+    }
+
     //----Time/Date-----
-    var d = new Date(),
-        h = d.getHours(),
-        m = d.getMinutes();
-    if (h < 10) h = '0' + h;
-    if (m < 10) m = '0' + m;
+
+    // var d = new Date(),
+    //     h = d.getHours(),
+    //     m = d.getMinutes();
+    // if (h < 10) h = '0' + h;
+    // if (m < 10) m = '0' + m;
 
     // set the default time to now
     // self.startTime = h + ':' + m;
